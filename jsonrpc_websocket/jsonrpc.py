@@ -84,6 +84,8 @@ class Server(jsonrpc_base.Server):
                     except ValueError:
                         continue
                 elif msg.type == aiohttp.WSMsgType.TEXT:
+                    if msg.data == 'pong':
+                        continue
                     try:
                         data = msg.json()
                     except ValueError as exc:
